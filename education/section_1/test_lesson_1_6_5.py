@@ -6,10 +6,6 @@ from selenium import webdriver
 
 link = "http://suninjuly.github.io/find_link_text"
 
-
-link
-
-
 try:
     browser = webdriver.Chrome()
     browser.get(link)
@@ -28,7 +24,7 @@ try:
 
 finally:
     # успеваем скопировать код за 30 секунд
-    time.sleep(10)
+    time.sleep(5)
     # закрываем браузер после всех манипуляций
     browser.quit()
 
