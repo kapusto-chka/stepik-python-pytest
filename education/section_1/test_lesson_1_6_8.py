@@ -9,15 +9,11 @@ try:
     browser = webdriver.Chrome()
     browser.get(link)
 
-    input1 = browser.find_element(By.CSS_SELECTOR, '.form-control[name="first_name"]')
-    input1.send_keys("Ivan")
-    input2 = browser.find_element(By.CSS_SELECTOR, '.form-control[name="last_name"]')
-    input2.send_keys("Petrov")
-    input3 = browser.find_element(By.CSS_SELECTOR, '.form-control.city')
-    input3.send_keys("Smolensk")
-    input4 = browser.find_element(By.CSS_SELECTOR, '#country')
-    input4.send_keys("Russia")
-    button = browser.find_element(By.CSS_SELECTOR, "button.btn")
+    input1 = browser.find_element(By.CSS_SELECTOR, '.form-control[name="first_name"]').send_keys("Ivan")
+    input2 = browser.find_element(By.CSS_SELECTOR, '.form-control[name="last_name"]').send_keys("Petrov")
+    input3 = browser.find_element(By.CSS_SELECTOR, '.form-control.city').send_keys("Smolensk")
+    input4 = browser.find_element(By.CSS_SELECTOR, '#country').send_keys("Russia")
+    button = browser.find_element(By.XPATH, "//button[text()='Submit']")
     button.click()
 
 finally:
