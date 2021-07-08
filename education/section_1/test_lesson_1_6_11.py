@@ -1,7 +1,7 @@
 # внутри написал условие, по которому будет определяться ссылка (на норм страницу и страницу с багом)
 # нужно ввеести цифру 1 или 2 на первом этапе 1 - откроется страница без бага; 2 - откроется страница с багом
 
-
+from selenium.webdriver.common.by import By
 from selenium import webdriver
 import time
 
@@ -14,19 +14,16 @@ if x == 1:
     browser = webdriver.Chrome().get(link_1)
 elif x == 2:
     browser = webdriver.Chrome().get(link_2)
-
 else:
     print('вы не справились')
     exit()
 
 try:
     # browser = webdriver.Chrome()
-    input1 = browser.find_element_by_css_selector('.first_block .form-control.first')
-    input1.send_keys("Ivan")
-    input2 = browser.find_element_by_css_selector('.first_block .form-control.second')
-    input2.send_keys("Petrov")
-    input3 = browser.find_element_by_css_selector('.first_block .form-control.third')
-    input3.send_keys("ivanpetrov@testmail.com")
+
+    input1 = browser.find_element_by_css_selector('.first_block .form-control.first').send_keys("Ivan")
+    input2 = browser.find_element_by_css_selector('.first_block .form-control.second').send_keys("Petrov")
+    input3 = browser.find_element_by_css_selector('.first_block .form-control.third').send_keys("ivanpetrov@testmail.com")
 
     button = browser.find_element_by_css_selector("button.btn")
     button.click()
