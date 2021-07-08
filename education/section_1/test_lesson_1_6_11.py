@@ -1,8 +1,8 @@
 # внутри написал условие, по которому будет определяться ссылка (на норм страницу и страницу с багом)
 # нужно ввеести цифру 1 или 2 на первом этапе 1 - откроется страница без бага; 2 - откроется страница с багом
 
-from selenium.webdriver.common.by import By
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 import time
 
 link_1 = 'http://suninjuly.github.io/registration1.html'
@@ -17,22 +17,19 @@ elif x == 2:
 else:
     print('вы не справились')
     exit()
-
 try:
-    # browser = webdriver.Chrome()
+    input1 = browser.find_element(By.CSS_SELECTOR, '[placeholder="Input your first name"]').send_keys('Ivan')
+    input2 = browser.find_element(By.CSS_SELECTOR, '[placeholder="Input your last name"]').send_keys('Ivanov')
+    input3 = browser.find_element(By.CSS_SELECTOR, '[placeholder="Input your email"]').send_keys('i.ivanov@testmail.com')
+    button = browser.find_element(By.CSS_SELECTOR, 'button.btn').click()
 
-    input1 = browser.find_element_by_css_selector('.first_block .form-control.first').send_keys("Ivan")
-    input2 = browser.find_element_by_css_selector('.first_block .form-control.second').send_keys("Petrov")
-    input3 = browser.find_element_by_css_selector('.first_block .form-control.third').send_keys("ivanpetrov@testmail.com")
-
-    button = browser.find_element_by_css_selector("button.btn")
-    button.click()
     time.sleep(2)
-    welcome_text_elt = browser.find_element_by_tag_name("h1")
+
+    welcome_text_elt = browser.find_element(By.TAG_NAME, "h1")
     welcome_text = welcome_text_elt.text
 
     assert "Congratulations! You have successfully registered!" == welcome_text
 
 finally:
-    time.sleep(10)
+    time.sleep(5)
     browser.quit()
